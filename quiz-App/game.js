@@ -14,6 +14,13 @@ const arr = [
     facke3: "4+2 = 2",
     real: "4+2 =6",
   },
+  {
+    question: "calclaute 9+2 !",
+    facke1: "4+2 = 3",
+    facke2: "4+2 = 0",
+    facke3: "4+2 = 2",
+    real: "9+2 =11",
+  }
 ];
 const spans = document.querySelectorAll(".spans");
 const quizContainer = document.querySelector(".quiz-container");
@@ -53,17 +60,27 @@ function changeQueation() {
       if (p_content === arr[initIndex].real) {
         console.log("ok");
         correctAnswer()
-      } else {
-        console.log("note ok");
+      } else if(p_content !== arr[initIndex].real){
+          wrongAnswer()
       }
     });
   });
 }
 
 function correctAnswer(){
-  initIndex++
-  loopData(initIndex)
   score_points+=100
+  initIndex++
+
+  loopData(initIndex)
+
+
   score.innerText =score_points
+
+}
+
+
+function wrongAnswer(){
+console.log("worng answer")
+score_points -=100
 
 }
